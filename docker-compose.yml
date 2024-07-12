@@ -1,0 +1,84 @@
+services:
+  client:
+    image: jazzy-experiment:latest
+    restart: no
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
+    profiles:
+      - client
+    volumes:
+      - ./config:/opt/config
+    network_mode: host
+
+  jazzy-action-server:
+    image: jazzy-experiment:latest
+    restart: no
+    env_file:
+      - ./config/ros2.env
+    command: ros2 run action_tutorials_py fibonacci_action_server
+    profiles:
+      - jazzy
+    volumes:
+      - ./config:/opt/config
+    network_mode: host
+
+  iron-action-server:
+    image: iron-experiment:latest
+    restart: no
+    env_file:
+      - ./config/ros2.env
+    command: ros2 run action_tutorials_py fibonacci_action_server
+    profiles:
+      - iron
+    volumes:
+      - ./config:/opt/config
+    network_mode: host
+
+  humble-action-server:
+    image: humble-experiment:latest
+    restart: no
+    env_file:
+      - ./config/ros2.env
+    command: ros2 run action_tutorials_py fibonacci_action_server
+    profiles:
+      - humble
+    volumes:
+      - ./config:/opt/config
+    network_mode: host
+
+  jazzy-service-server:
+    image: jazzy-experiment:latest
+    restart: no
+    env_file:
+      - ./config/ros2.env
+    command: ros2 run demo_nodes_cpp add_two_ints_server
+    profiles:
+      - jazzy
+    volumes:
+      - ./config:/opt/config
+    network_mode: host
+
+  iron-service-server:
+    image: iron-experiment:latest
+    restart: no
+    env_file:
+      - ./config/ros2.env
+    command: ros2 run demo_nodes_cpp add_two_ints_server
+    profiles:
+      - iron
+    volumes:
+      - ./config:/opt/config
+    network_mode: host
+
+  humble-service-server:
+    image: humble-experiment:latest
+    restart: no
+    env_file:
+      - ./config/ros2.env
+    command: ros2 run demo_nodes_cpp add_two_ints_server
+    profiles:
+      - humble
+    volumes:
+      - ./config:/opt/config
+    network_mode: host

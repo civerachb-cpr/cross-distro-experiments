@@ -5,6 +5,8 @@ services:
     entrypoint: /bin/bash
     stdin_open: true
     tty: true
+    env_file:
+      - ./config/ros2.env
     profiles:
       - client
     volumes:

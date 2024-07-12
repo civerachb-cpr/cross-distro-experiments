@@ -2,6 +2,7 @@ FROM ros:jazzy
 
 # install ros packages
 RUN apt-get update && apt-get install -y \
+      ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
       ros-${ROS_DISTRO}-action-tutorials-cpp \
       ros-${ROS_DISTRO}-action-tutorials-py \
       ros-${ROS_DISTRO}-demo-nodes-cpp \
